@@ -8,12 +8,14 @@ class Album(models.Model):
     genre = models.CharField(max_length=100)
     album_log = models.CharField(max_length=1000)
     
+            
+    def get_absolute_url(self):
+        return reverse('music:detail', kwargs = {'pk',self.pk})
+    
     def __str__(self):
         return self.album_title + ' - ' + self.artist
         
-        
-    def get_absolute_url(self):
-        return reverse('music :detail', kwargs = {'pk',self.pk})
+
     
 class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
