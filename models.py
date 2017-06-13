@@ -10,7 +10,8 @@ class Album(models.Model):
     
             
     def get_absolute_url(self):
-        return reverse('music:detail', kwargs = {'pk',self.pk})
+        return reverse('music:detail', args = {self.pk})
+        #return reverse('music:index')
     
     def __str__(self):
         return self.album_title + ' - ' + self.artist
